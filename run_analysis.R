@@ -8,6 +8,7 @@ if (!file.exists(filename)){
   download.file(fileURL, filename)
 }  
 
+<<<<<<< HEAD
 # Checking if folder exists - if it does not exist it is created
 if (!file.exists("UCI HAR Dataset")) { 
   unzip(filename) 
@@ -17,3 +18,9 @@ if (!file.exists("UCI HAR Dataset")) {
 # Data Frame Creation
 
 features <- read.table("UCI HAR Dataset/features.txt", col.names = c("n","functions"))
+=======
+# Checking if folder exists
+if (!file.exists("UCI HAR Dataset")) { 
+  unzip(filename) 
+}
+>>>>>>> a51baa088a1798e66e442add0924d104cda8b489
