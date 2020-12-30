@@ -17,10 +17,30 @@ if (!file.exists("UCI HAR Dataset")) {
 
 # Data Frame Creation
 
-features <- read.table("UCI HAR Dataset/features.txt", col.names = c("n","functions"))
-=======
-# Checking if folder exists
-if (!file.exists("UCI HAR Dataset")) { 
-  unzip(filename) 
-}
->>>>>>> a51baa088a1798e66e442add0924d104cda8b489
+features <- read.table("UCI HAR Dataset/features.txt", col.names = c("index","functions"))
+activities <- read.table("UCI HAR Dataset/activity_labels.txt", col.names = c("index2", "activity"))
+
+subject_test <- read.table("UCI HAR Dataset/test/subject_test.txt", col.names = "subject")
+x_test <- read.table("UCI HAR Dataset/test/X_test.txt", col.names = features$functions)
+y_test <- read.table("UCI HAR Dataset/test/y_test.txt", col.names = "code")
+subject_train <- read.table("UCI HAR Dataset/train/subject_train.txt", col.names = "subject")
+x_train <- read.table("UCI HAR Dataset/train/X_train.txt", col.names = features$functions)
+y_train <- read.table("UCI HAR Dataset/train/y_train.txt", col.names = "code")
+
+# Analysis Steps
+
+# Mergin the training and the test sets to create one data set.
+
+XTRAIN <- rbind(x_train, x_test)
+YTRAIN <- rbind(y_train, y_test)
+Subjects <- rbind(subject_train, subject_test)
+Merged_Set <- cbind(Subjects, YTRAIN, XTRAIN)
+
+
+
+
+
+
+
+
+
